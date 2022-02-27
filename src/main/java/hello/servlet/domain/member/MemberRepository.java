@@ -1,4 +1,4 @@
-package hello.servlet.domain;
+package hello.servlet.domain.member;
 
 import java.util.*;
 
