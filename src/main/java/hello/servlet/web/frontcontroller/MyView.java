@@ -14,11 +14,6 @@ public class MyView {
         this.viewPath = viewPath;
     }
 
-    public void render(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
-        RequestDispatcher dispatcher = req.getRequestDispatcher(viewPath);
-        dispatcher.forward(req,res);
-    }
-
     public void render(Map<String, Object> model, HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
         modelToReqAttribute(model, req);
         render(req, res);
@@ -26,5 +21,10 @@ public class MyView {
 
     private void modelToReqAttribute(Map<String, Object> model, HttpServletRequest req) {
         model.forEach((key, value) -> req.setAttribute(key, value));
+    }
+
+    public void render(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
+        RequestDispatcher dispatcher = req.getRequestDispatcher(viewPath);
+        dispatcher.forward(req,res);
     }
 }
